@@ -1,18 +1,18 @@
-# CoreOS on VMWare ESXi
+# CoreOS Container Linux on VMWare ESXi
 
-VMWare is a community-supported platform for CoreOS, but the OVA deployment
-method has not worked well for me. Among other reasons, a big one is that the
-free version of ESXi, without vSphere/vCenter, does not persist the guest info.
+VMWare is a community-supported platform for [CoreOS Container
+Linux](https://coreos.com/os/), but the OVA deployment method has not worked
+well for me. Among other reasons, a big one is that the free version of ESXi,
+without vSphere/vCenter, does not persist the guestinfo variables.
 Additionally, even when I got that sorted out, the cloud-init/cloud-config
 method that sets static IPs based on the guestinfo wasn't working well for me
 and had problems such as not releasing the DHCP address it got before the
-systemd network unit was create.
+systemd network unit was created.
 
-In any case, it just wasn't working at all for me. What did work was using the
-VMDK image that CoreOS publishes, and using Ignition to set the IP information.
-By creating the VMX file manually and registering it with ESXi, the Ignition
-info can be passed in through guestinfo and everything appears to work as
-expected.
+In any case, it just wasn't working for me. What did work was using the VMDK
+image that CoreOS publishes, and using Ignition to set the IP information. By
+creating the VMX file manually and registering it with ESXi, the Ignition info
+can be passed in through guestinfo and everything appears to work as expected.
 
 ## Caveats
 
