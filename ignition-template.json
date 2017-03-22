@@ -1,0 +1,35 @@
+{
+  "ignition": {
+    "version": "2.0.0"
+  },
+  "passwd": {
+    "users": [
+      {
+        "name": "core",
+        "sshAuthorizedKeys": [
+          "ssh-ed25519 AAAAC...."
+        ]
+      }
+    ]
+  },
+  "networkd": {
+    "units": [
+      {
+        "name": "00-ens192.network",
+        "contents": "[Match]\nName=ens192\n\n[Network]\nAddress={IP}\nGateway={GATEWAY}\nDNS={DNS}\nDomains={DOMAIN}"
+      }
+    ]
+  },
+  "storage": {
+    "files": [
+      {
+        "filesystem": "root",
+        "path": "/etc/hostname",
+        "mode": 420,
+        "contents": {
+          "source": "data:,{NAME}"
+        }
+      }
+    ]
+  }
+}
